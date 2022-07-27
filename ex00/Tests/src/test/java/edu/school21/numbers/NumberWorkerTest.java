@@ -16,7 +16,7 @@ public class NumberWorkerTest {
         Assertions.assertEquals("Wrong input number", illegalNumberException.toString());
     }
     @ParameterizedTest
-    @ValueSource(ints = {2, 3, 5, 113, 3231233})
+    @ValueSource(ints = {2, 3, 5, 113, 3231233, Integer.MAX_VALUE})
     void isReallyPrime(int number) throws IllegalNumberException {
        Assertions.assertTrue(NumberWorker.isPrime(number));
     }
