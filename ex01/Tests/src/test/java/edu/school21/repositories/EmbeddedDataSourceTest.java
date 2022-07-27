@@ -12,9 +12,14 @@ import java.sql.SQLException;
 public class EmbeddedDataSourceTest {
     private DataSource dataSource;
     @BeforeEach
-    void initiation() {
+    void init() {
         dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL)
-                .addScript("schema.sql").addScript("data.sql").build();
+                .generateUniqueName(true)
+                .setScriptEncoding("UTF-8")
+                .ignoreFailedDrops(true)
+                .addScript("schema.sql")
+                .addScripts("data.sql")
+                .build();
     }
 
     @Test
