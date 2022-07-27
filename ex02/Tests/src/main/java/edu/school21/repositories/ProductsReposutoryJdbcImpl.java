@@ -46,7 +46,7 @@ public class ProductsReposutoryJdbcImpl implements ProductsRepository {
         query.setInt(2, product.getPrice());
         query.setLong(3, product.getId());
         try {
-            query.executeQuery();
+            query.execute();
         } catch (SQLException sqlException) {
 
         }
@@ -64,7 +64,7 @@ public class ProductsReposutoryJdbcImpl implements ProductsRepository {
         query.setInt(2, product.getPrice());
         ResultSet resultSet;
         try {
-            query.executeQuery();
+            query.execute();
             resultSet = connection.createStatement().executeQuery("CALL IDENTITY()");
             resultSet.next();
             if (resultSet.next()) {
